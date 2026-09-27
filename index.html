@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бүртгэлийн Форм - Лаборатори 02</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 5px 0;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    fieldset {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      padding: 15px 20px;
+    }
+
+    legend {
+      font-weight: bold;
+      color: #2c3e50;
+      padding: 0 8px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .radio-group label,
+    .checkbox-group label {
+      display: inline-block;
+      font-weight: normal;
+      margin-right: 15px;
+    }
+
+    .radio-group input,
+    .checkbox-group input {
+      margin-right: 5px;
+    }
+
+    small {
+      display: block;
+      color: #777;
+      margin-top: 4px;
+      font-size: 12px;
+    }
+
+    button {
+      background-color: #2c3e50;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #1a252f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Бүртгэлийн Форм</h1>
+    <p>Лаборатори 02 — Семантик HTML форм</p>
+  </header>
+
+  <main>
+    <form action="#" method="post">
+
+      <fieldset>
+        <legend>Хувийн мэдээлэл</legend>
+
+        <!-- 1. text -->
+        <div class="form-group">
+          <label for="fullname">Нэр:</label>
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            placeholder="Жишээ: Бат-Эрдэнэ"
+            minlength="2"
+            maxlength="50"
+            required
+          >
+        </div>
+
+        <!-- 2. email -->
+        <div class="form-group">
+          <label for="email">Имэйл хаяг:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="jishee@gmail.com"
+            required
+          >
+        </div>
+
+        <!-- 3. password -->
+        <div class="form-group">
+          <label for="password">Нууц үг:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Дор хаяж 8 тэмдэгт"
+            pattern="(?=.*[A-Za-z])(?=.*\d).{8,}"
+            title="Нууц үг дор хаяж 8 тэмдэгт, латин үсэг болон тоо агуулсан байх ёстой"
+            required
+          >
+          <small>Дор хаяж 8 тэмдэгт, үсэг болон тоо хослуулна</small>
+        </div>
+
+        <!-- 4. date -->
+        <div class="form-group">
+          <label for="birthdate">Төрсөн огноо:</label>
+          <input
+            type="date"
+            id="birthdate"
+            name="birthdate"
+            required
+          >
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Хүйс</legend>
+        <!-- 5. radio -->
+        <div class="form-group radio-group">
+          <input type="radio" id="male" name="gender" value="male" required>
+          <label for="male" style="display:inline;">Эрэгтэй</label>
+
+          <input type="radio" id="female" name="gender" value="female">
+          <label for="female" style="display:inline;">Эмэгтэй</label>
+
+          <input type="radio" id="other" name="gender" value="other">
+          <label for="other" style="display:inline;">Бусад</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Сонирхол</legend>
+        <!-- 6. checkbox -->
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="sport" name="interests" value="sport">
+          <label for="sport" style="display:inline;">Спорт</label>
+
+          <input type="checkbox" id="music" name="interests" value="music">
+          <label for="music" style="display:inline;">Хөгжим</label>
+
+          <input type="checkbox" id="reading" name="interests" value="reading">
+          <label for="reading" style="display:inline;">Ном унших</label>
+
+          <input type="checkbox" id="travel" name="interests" value="travel">
+          <label for="travel" style="display:inline;">Аялал</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Нэмэлт мэдээлэл</legend>
+        <!-- 7. select -->
+        <div class="form-group">
+          <label for="city">Хот/Аймаг:</label>
+          <select id="city" name="city" required>
+            <option value="">-- Сонгоно уу --</option>
+            <option value="ulaanbaatar">Улаанбаатар</option>
+            <option value="darkhan">Дархан</option>
+            <option value="erdenet">Эрдэнэт</option>
+            <option value="other">Бусад</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <button type="submit">Бүртгүүлэх</button>
+
+    </form>
+  </main>
+
+  <footer>
+  </footer>
+
+</body>
+</html>
