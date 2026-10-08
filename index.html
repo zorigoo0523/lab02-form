@@ -1,271 +1,150 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Оюутны бүртгэлийн портал: хувийн анкет, сонирхол, дүн">
-  <title>Лаборатори 02: Хэрэглэгчийн анкет</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лаборатори 03: Хэрэглэгчийн анкет CSS загварчлал</title>
+    
+    <!-- 5. Google Fonts холбох -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- 1. External CSS файлтай холбох -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Вэбийн толгой хэсэг -->
+    <header class="main-header">
+        <h1 class="page-title">Оюутны Бүртгэлийн Портал</h1>
+        <!-- Навигацийн цэс -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Нүүр</a></li>
+                <!-- 4. Position: relative/absolute ашиглах Badge жишээ -->
+                <li class="badge-container">
+                    <a href="#">Анкет засах</a>
+                    <span class="badge">Шинэ</span>
+                </li>
+                <li><a href="#">Тусламж</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Холбоос: гарын товчлолоор шууд формд очих -->
-  <a href="#anket">Анкет руу шууд очих</a>
+    <!-- Үндсэн контент -->
+    <main class="container">
+        <article>
+            <!-- Сонирхлын жагсаалт -->
+            <section class="content-section">
+                <h2 class="section-title">Миний сонирхол</h2>
+                <ul class="interest-list">
+                    <li>Веб хөгжүүлэлт</li>
+                    <li>Фото зураг авах</li>
+                    <li>Кино үзэх</li>
+                </ul>
+            </section>
 
-  <!-- ===== ТОЛГОЙ ХЭСЭГ ===== -->
-  <header>
-    <h1>Оюутны Бүртгэлийн Портал</h1>
-    <p>Мэдээллээ шинэчлэх, дүнгээ харах, анкетаа бөглөх газар</p>
+            <!-- Дүнгийн хүснэгт -->
+            <section class="content-section">
+                <h2 class="section-title">Миний дүн</h2>
+                <table class="grades-table">
+                    <thead>
+                        <tr>
+                            <th>Хичээл</th>
+                            <th>Дүн</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Веб зохиомж</td>
+                            <td>95</td>
+                        </tr>
+                        <tr>
+                            <td>Мэдээллийн сан</td>
+                            <td>88</td>
+                        </tr>
+                        <tr>
+                            <td>Алгоритм</td>
+                            <td>92</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-    <nav aria-label="Үндсэн цэс">
-      <ul>
-        <li><a href="../index.html">Нүүр</a></li>
-        <li><a href="#anket">Анкет засах</a></li>
-        <li><a href="#help">Тусламж</a></li>
-      </ul>
-    </nav>
-  </header>
+            <section class="form-section">
+                <h2 class="section-title">Хэрэглэгчийн Анкет Бөглөх</h2>
+                <p class="form-description">Доорх формын дагуу мэдээллээ бүрэн, үнэн зөв зааж бөглөнө үү.</p>
+                
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <!-- 1-р бүлэг: Хувийн мэдээлэл -->
+                    <fieldset class="form-group">
+                        <legend class="form-legend">Хувийн мэдээлэл</legend>
+                        
+                        <!-- 2. Class сонгогч ашиглан талбаруудыг загварчлах -->
+                        <label for="fullname" class="form-label">Овог нэр:</label>
+                        <input type="text" id="fullname" name="fullname" class="form-input" placeholder="И. Болдбаатар" required minlength="2">
+                        
+                        <label for="email" class="form-label">Цахим хаяг (Email):</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="example@domain.com" required>
+                        
+                        <label for="password" class="form-label">Нууц үг:</label>
+                        <input type="password" id="password" name="password" class="form-input" required minlength="6">
+                        
+                        <label for="phone" class="form-label">Утасны дугаар:</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" pattern="[0-9]{8}" placeholder="88112233" required>
+                        
+                        <label for="dob" class="form-label">Төрсөн огноо:</label>
+                        <input type="date" id="dob" name="dob" class="form-input" required>
+                        
+                        <label class="form-label">Хүйс:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">Эрэгтэй</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Эмэгтэй</label>
+                        </div>
+                    </fieldset>
 
-  <hr>
+                    <!-- 2-р бүлэг: Мэргэжил ба Сургалтын мэдээлэл -->
+                    <fieldset class="form-group">
+                        <legend class="form-legend">Боловсрол ба Сонирхол</legend>
+                        
+                        <label for="degree" class="form-label">Суралцаж буй түвшин:</label>
+                        <select id="degree" name="degree" class="form-input" required>
+                            <option value="">-- Сонгоно уу --</option>
+                            <option value="bachelor">Бакалавр</option>
+                            <option value="master">Магистр</option>
+                            <option value="doctor">Докторант</option>
+                        </select>
+                        
+                        <label class="form-label">Сонирхож буй технологиуд:</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="html" name="skills" value="HTML">
+                            <label for="html">HTML5 / CSS3</label><br>
+                            <input type="checkbox" id="js" name="skills" value="JavaScript">
+                            <label for="js">JavaScript</label><br>
+                            <input type="checkbox" id="php" name="skills" value="PHP">
+                            <label for="php">PHP & MySQL</label>
+                        </div><br>
+                        
+                        <label for="avatar" class="form-label">Профайл зураг оруулна уу:</label>
+                        <input type="file" id="avatar" name="avatar" class="form-file" accept="image/*">
+                        
+                        <label for="bio" class="form-label">Товч танилцуулга / Өөрийн тухай:</label>
+                        <textarea id="bio" name="bio" rows="4" class="form-input" placeholder="Өөрийн танилцуулгыг энд бичнэ үү..."></textarea>
+                    </fieldset>
+                    
+                    <!-- 2. Class сонгогч ашиглан товчнуудыг загварчлах -->
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">Анкет Илгээх</button>
+                        <button type="reset" class="btn btn-secondary">Дахин эхлүүлэх</button>
+                    </div>
+                </form>
+            </section>
+        </article>
+    </main>
 
-  <!-- ===== ҮНДСЭН КОНТЕНТ ===== -->
-  <main>
-    <article>
-
-      <!-- Профайл -->
-      <section aria-labelledby="profile-title">
-        <h2 id="profile-title">Оюутны профайл</h2>
-        <dl>
-          <dt>Сургууль</dt>
-          <dd>Мэдээллийн технологийн сургууль</dd>
-          <dt>Хөтөлбөр</dt>
-          <dd>Программ хангамж</dd>
-          <dt>Курс</dt>
-          <dd>2-р курс</dd>
-        </dl>
-      </section>
-
-      <!-- Сонирхол -->
-      <section aria-labelledby="interest-title">
-        <h2 id="interest-title">Миний сонирхол</h2>
-        <ul>
-          <li>Веб хөгжүүлэлт</li>
-          <li>Фото зураг авах</li>
-          <li>Кино үзэх</li>
-        </ul>
-      </section>
-
-      <!-- Дүн -->
-      <section aria-labelledby="grade-title">
-        <h2 id="grade-title">Миний дүн</h2>
-        <table border="1" cellpadding="6" cellspacing="0">
-          <caption>2026 оны намрын улирлын дүн (100 онооны системээр)</caption>
-          <thead>
-            <tr>
-              <th scope="col">№</th>
-              <th scope="col">Хичээл</th>
-              <th scope="col">Дүн</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Веб зохиомж</td>
-              <td>95</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Мэдээллийн сан</td>
-              <td>88</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Алгоритм</td>
-              <td>92</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th scope="row" colspan="2">Дундаж дүн</th>
-              <td>91.7</td>
-            </tr>
-          </tfoot>
-        </table>
-      </section>
-
-      <!-- ===== АНКЕТ ===== -->
-      <section id="anket" aria-labelledby="form-title">
-        <h2 id="form-title">Хэрэглэгчийн анкет бөглөх</h2>
-        <p>
-          Доорх формын дагуу мэдээллээ бүрэн, үнэн зөв бөглөнө үү.
-          <strong>*</strong> тэмдэгтэй талбарыг заавал бөглөнө.
-        </p>
-
-        <form action="#" method="POST" enctype="multipart/form-data">
-
-          <!-- 1-р бүлэг: Хувийн мэдээлэл -->
-          <fieldset>
-            <legend>1. Хувийн мэдээлэл</legend>
-
-            <p>
-              <label for="fullname">Овог нэр *</label><br>
-              <input type="text" id="fullname" name="fullname"
-                     placeholder="И. Болдбаатар"
-                     required minlength="2" maxlength="60"
-                     autocomplete="name">
-            </p>
-
-            <p>
-              <label for="email">Цахим хаяг (Email) *</label><br>
-              <input type="email" id="email" name="email"
-                     placeholder="example@domain.com"
-                     required autocomplete="email"
-                     aria-describedby="email-hint">
-              <br><small id="email-hint">Жишээ: name@gmail.com</small>
-            </p>
-
-            <p>
-              <label for="password">Нууц үг *</label><br>
-              <input type="password" id="password" name="password"
-                     required minlength="6" maxlength="30"
-                     autocomplete="new-password"
-                     aria-describedby="password-hint">
-              <br><small id="password-hint">Хамгийн багадаа 6 тэмдэгт.</small>
-            </p>
-
-            <p>
-              <label for="phone">Утасны дугаар *</label><br>
-              <input type="tel" id="phone" name="phone"
-                     pattern="[0-9]{8}" maxlength="8"
-                     placeholder="88112233"
-                     title="8 оронтой тоо оруулна уу (жишээ: 88112233)"
-                     required autocomplete="tel"
-                     aria-describedby="phone-hint">
-              <br><small id="phone-hint">Зөвхөн 8 оронтой тоо, зайгүй бичнэ.</small>
-            </p>
-
-            <p>
-              <label for="dob">Төрсөн огноо *</label><br>
-              <input type="date" id="dob" name="dob"
-                     min="1960-01-01" max="2012-12-31" required>
-            </p>
-
-            <!-- Radio бүлгийг fieldset-ээр бүлэглэх нь хүртээмжтэй -->
-            <fieldset>
-              <legend>Хүйс *</legend>
-              <input type="radio" id="male" name="gender" value="male" required>
-              <label for="male">Эрэгтэй</label>
-              <input type="radio" id="female" name="gender" value="female">
-              <label for="female">Эмэгтэй</label>
-            </fieldset>
-          </fieldset>
-
-          <br>
-
-          <!-- 2-р бүлэг: Боловсрол ба сонирхол -->
-          <fieldset>
-            <legend>2. Боловсрол ба сонирхол</legend>
-
-            <p>
-              <label for="degree">Суралцаж буй түвшин *</label><br>
-              <select id="degree" name="degree" required>
-                <option value="">-- Сонгоно уу --</option>
-                <optgroup label="Дээд боловсрол">
-                  <option value="bachelor">Бакалавр</option>
-                  <option value="master">Магистр</option>
-                  <option value="doctor">Докторант</option>
-                </optgroup>
-              </select>
-            </p>
-
-            <p>
-              <label for="major">Мэргэжил</label><br>
-              <input type="text" id="major" name="major" list="major-list"
-                     placeholder="Мэргэжлээ сонгох эсвэл бичих">
-              <datalist id="major-list">
-                <option value="Программ хангамж">
-                <option value="Мэдээллийн систем">
-                <option value="Компьютерийн ухаан">
-                <option value="Сүлжээ, аюулгүй байдал">
-              </datalist>
-            </p>
-
-            <p>
-              <label for="year">Төгсөх жил</label><br>
-              <input type="number" id="year" name="year"
-                     min="2026" max="2035" value="2028">
-            </p>
-
-            <fieldset>
-              <legend>Сонирхож буй технологиуд</legend>
-              <input type="checkbox" id="html" name="skills" value="HTML">
-              <label for="html">HTML5 / CSS3</label><br>
-              <input type="checkbox" id="js" name="skills" value="JavaScript">
-              <label for="js">JavaScript</label><br>
-              <input type="checkbox" id="php" name="skills" value="PHP">
-              <label for="php">PHP &amp; MySQL</label>
-            </fieldset>
-
-            <p>
-              <label for="level">Веб хөгжүүлэлтийн мэдлэгийн түвшин</label><br>
-              <input type="range" id="level" name="level" min="1" max="10" value="5">
-              <small>(1 - анхан шат, 10 - ахисан түвшин)</small>
-            </p>
-
-            <p>
-              <label for="avatar">Профайл зураг оруулна уу</label><br>
-              <input type="file" id="avatar" name="avatar" accept="image/*">
-              <br><small>Зөвхөн зураг (JPG, PNG). </small>
-            </p>
-
-            <p>
-              <label for="bio">Товч танилцуулга / Өөрийн тухай</label><br>
-              <textarea id="bio" name="bio" rows="5" cols="50" maxlength="300"
-                        placeholder="Өөрийн танилцуулгыг энд бичнэ үү..."></textarea>
-              <br><small>Дээд тал нь 300 тэмдэгт.</small>
-            </p>
-          </fieldset>
-
-          <br>
-
-          <!-- Зөвшөөрөл -->
-          <p>
-            <input type="checkbox" id="agree" name="agree" required>
-            <label for="agree">Миний оруулсан мэдээлэл үнэн зөв гэдгийг батлав *</label>
-          </p>
-
-          <!-- Товчлуурууд -->
-          <p>
-            <button type="submit">Анкет илгээх</button>
-            <button type="reset">Дахин эхлүүлэх</button>
-          </p>
-        </form>
-      </section>
-
-      <!-- Тусламж -->
-      <section id="help" aria-labelledby="help-title">
-        <h2 id="help-title">Тусламж</h2>
-        <details>
-          <summary>Анкет илгээгдэхгүй байна</summary>
-          <p>Улаанаар заасан эсвэл анхааруулга гарсан талбарыг шалгана уу. Бүх * тэмдэгтэй талбар бөглөгдсөн байх ёстой.</p>
-        </details>
-        <details>
-          <summary>Утасны дугаар хүлээж авахгүй байна</summary>
-          <p>Зөвхөн 8 оронтой тоо оруулна. Зай, зураас, үсэг ашиглаж болохгүй.</p>
-        </details>
-      </section>
-
-    </article>
-  </main>
-
-  <hr>
-
-  <!-- ===== ХӨЛ ХЭСЭГ ===== -->
-  <footer>
-    <p>&copy; 2026 Веб зохиомж хичээл. Бүх эрх хуулиар хамгаалагдсан.</p>
-    <address>
-      Холбоо барих: <a href="mailto:info@example.com">info@example.com</a>
-    </address>
-  </footer>
-
+    <!-- Хөл хэсэг -->
+    <footer class="main-footer">
+        <p>&copy; 2026 Веб зохиомж хичээл. Бүх эрх хуулиар хамгаалагдсан.</p>
+    </footer>
 </body>
 </html>
